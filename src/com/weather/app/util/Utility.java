@@ -1,4 +1,4 @@
-package com.coolweather.app.util;
+package com.weather.app.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,10 +7,10 @@ import java.util.Locale;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.coolweather.app.db.CoolWeatherDB;
-import com.coolweather.app.model.City;
-import com.coolweather.app.model.County;
-import com.coolweather.app.model.Province;
+import com.weather.app.db.weatherDB;
+import com.weather.app.model.City;
+import com.weather.app.model.County;
+import com.weather.app.model.Province;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -23,7 +23,7 @@ public class Utility {
 	 * 解析和处理服务器返回的省级数据
 	 */
 	public synchronized static boolean handleProvincesResponse(
-			CoolWeatherDB coolWeatherDB, String response) {
+			weatherDB weatherDB, String response) {
 		if (!TextUtils.isEmpty(response)) {
 			String[] allProvinces = response.split(",");
 			if (allProvinces != null && allProvinces.length > 0) {
@@ -33,7 +33,7 @@ public class Utility {
 					province.setProvinceCode(array[0]);
 					province.setProvinceName(array[1]);
 					// 将解析出来的数据存储到Province表
-					coolWeatherDB.saveProvince(province);
+					weatherDB.saveProvince(province);
 				}
 				return true;
 			}
@@ -44,7 +44,7 @@ public class Utility {
 	/**
 	 * 解析和处理服务器返回的市级数据
 	 */
-	public static boolean handleCitiesResponse(CoolWeatherDB coolWeatherDB,
+	public static boolean handleCitiesResponse(weatherDB weatherDB,
 			String response, int provinceId) {
 		if (!TextUtils.isEmpty(response)) {
 			String[] allCities = response.split(",");
@@ -56,7 +56,7 @@ public class Utility {
 					city.setCityName(array[1]);
 					city.setProvinceId(provinceId);
 					// 将解析出来的数据存储到City表
-					coolWeatherDB.saveCity(city);
+					weatherDB.saveCity(city);
 				}
 				return true;
 			}
@@ -67,7 +67,7 @@ public class Utility {
 	/**
 	 * 解析和处理服务器返回的县级数据
 	 */
-	public static boolean handleCountiesResponse(CoolWeatherDB coolWeatherDB,
+	public static boolean handleCountiesResponse(weatherDB weatherDB,
 			String response, int cityId) {
 		if (!TextUtils.isEmpty(response)) {
 			String[] allCounties = response.split(",");
@@ -79,7 +79,7 @@ public class Utility {
 					county.setCountyName(array[1]);
 					county.setCityId(cityId);
 					// 将解析出来的数据存储到County表
-					coolWeatherDB.saveCounty(county);
+					weatherDB.saveCounty(county);
 				}
 				return true;
 			}

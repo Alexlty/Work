@@ -1,18 +1,18 @@
-package com.coolweather.app.db;
+package com.weather.app.db;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.coolweather.app.model.City;
-import com.coolweather.app.model.County;
-import com.coolweather.app.model.Province;
+import com.weather.app.model.City;
+import com.weather.app.model.County;
+import com.weather.app.model.Province;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-public class CoolWeatherDB {
+public class weatherDB {
 
 	/**
 	 * 数据库名
@@ -24,27 +24,27 @@ public class CoolWeatherDB {
 	 */
 	public static final int VERSION = 1;
 
-	private static CoolWeatherDB coolWeatherDB;
+	private static weatherDB weatherDB;
 
 	private SQLiteDatabase db;
 
 	/**
 	 * 将构造方法私有化
 	 */
-	private CoolWeatherDB(Context context) {
-		CoolWeatherOpenHelper dbHelper = new CoolWeatherOpenHelper(context,
+	private weatherDB(Context context) {
+		weatherOpenHelper dbHelper = new weatherOpenHelper(context,
 				DB_NAME, null, VERSION);
 		db = dbHelper.getWritableDatabase();
 	}
 
 	/**
-	 * 获取CoolWeatherDB的实例。
+	 * 获取weatherDB的实例。
 	 */
-	public synchronized static CoolWeatherDB getInstance(Context context) {
-		if (coolWeatherDB == null) {
-			coolWeatherDB = new CoolWeatherDB(context);
+	public synchronized static weatherDB getInstance(Context context) {
+		if (weatherDB == null) {
+			weatherDB = new weatherDB(context);
 		}
-		return coolWeatherDB;
+		return weatherDB;
 	}
 
 	/**

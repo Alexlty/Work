@@ -1,11 +1,11 @@
-package com.coolweather.app.db;
+package com.weather.app.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
+public class weatherOpenHelper extends SQLiteOpenHelper {
 	
 	/**
 	 *  Province表建表语句
@@ -31,7 +31,7 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 				+ "county_code text, " 
 				+ "city_id integer)";
 
-	public CoolWeatherOpenHelper(Context context, String name, CursorFactory factory,
+	public weatherOpenHelper(Context context, String name, CursorFactory factory,
 			int version) {
 		super(context, name, factory, version);
 	}

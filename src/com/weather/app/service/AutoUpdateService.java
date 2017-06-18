@@ -1,9 +1,9 @@
-package com.coolweather.app.service;
+package com.weather.app.service;
 
-import com.coolweather.app.receiver.AutoUpdateReceiver;
-import com.coolweather.app.util.HttpCallbackListener;
-import com.coolweather.app.util.HttpUtil;
-import com.coolweather.app.util.Utility;
+import com.weather.app.receiver.AutoUpdateReceiver;
+import com.weather.app.util.HttpCallbackListener;
+import com.weather.app.util.HttpUtil;
+import com.weather.app.util.Utility;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
